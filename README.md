@@ -1,186 +1,134 @@
-# Solana Coin Indexing Backend
+A lightweight, Solana-first indexing and data infrastructure layer built to provide fast, reliable, and composable on-chain data for applications, analytics, and developers.
 
-A fast and scalable backend service for indexing new and updated tokens on the Solana blockchain. Includes a RESTful API with Swagger documentation and Telegram integration for real-time notifications.
+This repository contains the core indexer logic, APIs, and tooling used by Hippo and related products.
 
-## ✨ Features
+Overview
 
-- ✅ Index new token mints and metadata
-- 🔁 Monitor for token updates (price, liquidity, holders, etc.)
-- 📬 Send Telegram alerts for new token listings
-- 📘 Swagger UI for API documentation
-- 🛠️ Written in Node.js / TypeScript
-- ⚡ PostgreSQL or Redis for persistent storage
+Solana Index is designed to solve a simple problem:
 
----
+Accessing clean, structured, real-time Solana data should be easy, fast, and permissionless.
 
-[![image](https://github.com/user-attachments/assets/ea441bdd-81ae-4d81-b22d-181a7150bd6d)](https://coin-indexing-app-backend.vercel.app/)
+Instead of relying on fragmented RPC calls or centralized dashboards, Solana Index aggregates, normalizes, and exposes on-chain data in a way that is usable for:
 
+Apps and dashboards
 
-## 📦 Tech Stack
+Trading tools
 
-- **Solana Web3.js**
-- **Node.js / Express**
-- **Redis**
-- **Swagge**
-- **Telegram Bot API**
+Analytics platforms
 
----
+Research and monitoring
 
-## 🚀 Getting Started
+Protocol-level integrations
 
-### Prerequisites
+Key Features
 
-- Node.js ≥ 18
-- Redis
-- A Telegram Bot Token (from [@BotFather](https://t.me/BotFather))
-- A Telegram Chat ID (group or user)
+Solana-native indexing
 
-### Clone the Repo
+Blocks, transactions, accounts, programs, and events
 
-```bash
-git clone https://github.com/vvizardev/coin-indexing-app-backend.git
-```
+Real-time + historical data
 
-### Install Dependencies
+Composable APIs
 
-```bash
-npm install
-```
+Designed to be consumed by other apps and services
 
-### Environment Variables
+Modular architecture
 
-Create a `.env` file:
+Easy to extend for new programs or data types
 
-```env
-SOLANA_TRACKER_API_KEY=
-PORT=
-BOT_TOKEN=
-CHANNEL_HANDLE=
-BOT_NAME=
-API_URL=
-```
+Open and transparent
 
-### Run the Indexer
+Built in public, with clear documentation
 
-```bash
-npm run start
-# or
-cargo run
-```
+Architecture (High-Level)
 
----
+Solana RPC ingestion layer
 
-## 🧠 How It Works
+Indexing and normalization pipeline
 
-1. Connects to the Solana RPC and scans for new token mints.
-2. Fetches metadata using Metaplex or TokenList.
-3. Stores tokens in PostgreSQL or Redis.
-4. Sends Telegram messages when criteria match.
-5. Exposes an API to retrieve token data via REST.
+Storage and query layer
 
----
+Public-facing APIs
 
-## 📘 API Documentation
+Optional integrations for analytics and tooling
 
-After running the server, visit:
+The goal is not to over-engineer, but to ship something that actually works and scales.
 
-```
-http://localhost:3000
-```
+Hippo Token
 
-Here you’ll find Swagger UI with full documentation.
+The HIPPO token is designed to align incentives around the Solana Index ecosystem.
 
----
+It is not a governance gimmick or a short-term hype asset.
 
-## 🔔 Telegram Notifications
+Purpose
 
-Example message sent to Telegram:
+HIPPO is intended to:
 
-```
-🚀 New Token Detected!
-Name: Banana Coin 🍌
-Mint: F5vA...DxP
-Symbol: BANANA
-```
+Support long-term development of indexing infrastructure
 
-> Customize filters in `src/indexer/filter.ts` to reduce spam.
+Fund RPC, storage, and operational costs
 
----
+Align builders, users, and contributors
 
-## 📡 API Endpoints
+Enable future incentive mechanisms (access, usage, priority, etc.)
 
-### 🔥 Trending
+Principles
 
-- **Trending SOL Pools**  
-  `GET /api/v1/trending`  
-  _Get trending SOL pools_
+Infrastructure-first
 
-- **Trending Tokens (Tracker)**  
-  `GET /api/v1/tracker/trending`  
-  _Get trending tokens from tracker_
+Utility over speculation
 
----
+Long-term sustainability
 
-### 📈 Token Lists (Tracker)
+Transparent usage of funds
 
-- **Tokens by Volume**  
-  `GET /api/v1/tracker/tokens/volume`  
-  _Get tokens sorted by trading volume_
+Exact token mechanics and integrations will be documented as the system evolves.
 
-- **Tokens by Multi**  
-  `GET /api/v1/tracker/tokens/multi`  
-  _Get tokens by multi-metric logic_
+Current Status
 
-- **Latest Tokens**  
-  `GET /api/v1/tracker/tokens/latest`  
-  _Get the most recently listed tokens_
+Solana-based rebuild in progress
 
-- **Graduated Tokens**  
-  `GET /api/v1/tracker/tokens/graduated`  
-  _Get tokens that have graduated from tracker status_
+Core indexing MVP under active development
 
----
+APIs and documentation being finalized
 
-### 🔍 Token Details (Tracker)
+Early testing and iteration ongoing
 
-- **Get Token Details**  
-  `GET /api/v1/tracker/tokens/{tokenAddress}`  
-  _Fetch token details by its address_
+This project is intentionally moving slower than typical hype-driven launches to ensure correctness and reliability.
 
+Roadmap (High-Level)
 
----
+MVP indexer live on Solana
 
-## 🧪 Test
+Public API endpoints
 
-```bash
-npm run test
-```
+Documentation and examples
 
----
+Early user access
 
-## 🛡️ Production
+Feedback-driven iteration
 
-Use Docker:
+Expanded program coverage
 
-```bash
-docker build -t solana-indexer .
-docker run --env-file .env -p 3000:3000 solana-indexer
-```
+Details will evolve as the product matures.
 
----
+Contributing
 
-## 🙌 Contributing
+Contributions, feedback, and issues are welcome.
 
-PRs welcome! Please open an issue first to discuss any major changes.
+If you are:
 
----
+Building on Solana
 
-## 📄 License
+Working with on-chain data
 
-MIT © 2025 @vvizardev
+Interested in infra, tooling, or analytics
 
----
+Feel free to open an issue or start a discussion.
 
-## 📬 Contact
+Disclaimer
 
-- Telegram: [@heaven9099](https://t.me/heaven9099)
+This repository is under active development.
+APIs, token mechanics, and architecture may change.
+
+Nothing here should be considered financial advice.
